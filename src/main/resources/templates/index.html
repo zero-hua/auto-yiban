@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="asserts/images/favicon.ico" th:href="@{/asserts/images/favicon.ico}" rel="shortcut icon" >
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet"  type="text/css" >
+    <link href="asserts/css/login.css" th:href="@{/asserts/css/login.css}" rel="stylesheet">
+    <script type="text/javascript" src="asserts/js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <title>ban ban</title>
+</head>
+<body>
+<!--templates需要模板引擎解析-->
+<div class="center">
+    <form action="/register"  method="post" id="LF">
+        <h5>Hi! master</h5>
+        <p>Remember, you are the girl who can fill the world with sunshine.</p>
+        <div th:if="${msg!=null}">
+            <p th:text="${msg}" style="color: red"></p>
+        </div>
+        <label for="username" >用户名</label>
+        <input type="text" id="username" placeholder="学号" name="yibanAccount">
+
+        <label for="password" >密码</label>
+        <input type="password" id="password" placeholder="身份证后六位" name="password">
+
+        <input type="submit" value="启用自动打卡" id="submit">
+
+        <p>© 2019-2020</p>
+    </form>
+</div>
+</body>
+</html>

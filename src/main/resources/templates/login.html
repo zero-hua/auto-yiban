@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="asserts/images/favicon.ico" th:href="@{/asserts/images/favicon.ico}" rel="shortcut icon" >
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet"  type="text/css" >
+    <link href="asserts/css/login.css" th:href="@{/asserts/css/login.css}" rel="stylesheet">
+    <script type="text/javascript" src="asserts/js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <title>wall street master</title>
+</head>
+<body>
+    <!--templates需要模板引擎解析-->
+    <div class="center">
+        <form action="/login/loginCheck"  method="post" id="LF">
+            <h5>欢迎,My master!</h5>
+            <div th:if="${msg!=null}">
+                <p th:text="${msg}" style="color: red"></p>
+            </div>
+            <label for="username" >用户名</label>
+            <input type="text" id="username" placeholder="易班账号" name="username">
+
+            <label for="password" >密码</label>
+            <input type="password" id="password" placeholder="易班密码" name="password">
+
+            <input type="button" value="Submit" id="submitBt">
+            <p>
+                <a href="/register">注册</a>
+                <a href="#">忘记密码</a>
+            </p>
+            <p>© 2019-2020</p>
+            <p><a th:href="@{/index.html(l='zh_CN')}">中文</a>  <a th:href="@{/index.html(l='en_US')}">English</a></p>
+        </form>
+    </div>
+</body>
+</html>

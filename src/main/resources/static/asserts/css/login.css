@@ -1,0 +1,73 @@
+.class{
+    background-color: aquamarine;
+}
+
+body{
+    background-color: #F9F9F9;
+}
+
+.center{
+    margin: 0;
+    position: absolute;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    background-color: #FFFFFF;
+    /*border: red 1px solid;*/
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+form{
+    margin: auto;
+    width: 250px;
+}
+h5{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.captcha{
+    display: flex;
+}
+
+.captcha input{
+    width: 50%;
+}
+
+.captcha img{
+    cursor: pointer;
+    margin: auto;
+    border: 1px solid #ccc;
+}
+
+/*.captcha input{*/
+/*    width: 50%;*/
+/*}*/
+
+label{
+    display:block;
+}
+
+input{
+    height: 40px;
+    width: 100%;
+    margin: 8px  0;
+    /* display: inline-block; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display:block;
+}
+
+input[type=submit]{
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+p{
+    text-align: center;
+}
