@@ -33,14 +33,12 @@ public class User {
 	/**
 	 * 易班账号
 	 */
-	@NotNull
 	@Column
 	private String yibanAccount;
 
 	/**
 	 * 易班密码
 	 */
-	@NotNull
 	@Column
 	private String password;
 

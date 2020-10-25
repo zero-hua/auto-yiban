@@ -2,6 +2,7 @@ package ink.zerohua.autoyiban.component;
 
 import ink.zerohua.autoyiban.entity.User;
 import ink.zerohua.autoyiban.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,6 +18,7 @@ import java.util.List;
  */
 @Configuration
 @EnableScheduling
+@Slf4j
 public class YiBanTimingTask {
 
     @Resource
@@ -26,14 +28,26 @@ public class YiBanTimingTask {
     private UserRepository repository;
 
 
-    @Scheduled(cron = "30 25 06 * * ?")//每天6:25:30打卡
-    private void autoYiban(){
+    @Scheduled(cron = "30 20 05 * * ?")//每天5:20:30打卡
+    private void autoYiban1(){
         List<User> users = repository.findAll();
         for(User user:users){
             if ( autoYiBanBean.clockIn(user)) {
-                System.out.println(user.getYibanAccount() + "打卡成功...");
+                log.info(user.getYibanAccount() + "  打卡成功...");
             }else {
-                System.out.println(user.getYibanAccount() + "打卡失败...");
+                log.error(user.getYibanAccount() + "  打卡失败...");
+            }
+        }
+    }
+
+    @Scheduled(cron = "30 20 08 * * ?")//每天8:20:30打卡,防止第一次出错
+    private void autoYiban2(){
+        List<User> users = repository.findAll();
+        for(User user:users){
+            if ( autoYiBanBean.clockIn(user)) {
+                log.info(user.getYibanAccount() + "  打卡成功...");
+            }else {
+                log.error(user.getYibanAccount() + "  打卡失败...");
             }
         }
     }

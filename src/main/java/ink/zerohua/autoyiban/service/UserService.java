@@ -4,10 +4,12 @@ import ink.zerohua.autoyiban.component.AutoYiBanBean;
 import ink.zerohua.autoyiban.entity.User;
 import ink.zerohua.autoyiban.repository.UserRepository;
 import ink.zerohua.autoyiban.util.Md5Util;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -16,6 +18,7 @@ import java.util.Optional;
  * @create: 2020-10-17 03:47
  **/
 @Service
+@Slf4j
 public class UserService {
 
 	@Resource
@@ -39,17 +42,17 @@ public class UserService {
 
 	public String verify(User user) {
 		if (this.isExist(user.getYibanAccount())) {
-			System.out.println(user.getYibanAccount() + "重复提交...");
+			log.warn(user.getYibanAccount() + "  重复提交..");
 			//账号已经存在，请勿重复提交
 			return "3";
 		}
 		if (new AutoYiBanBean().login(user)) {
 			//成功注册
-			System.out.println(user.getYibanAccount() + "注册成功...");
+			log.info(user.getYibanAccount() + "  注册成功..");
 			return "1";
 		}else {
 			//用户名密码错误
-			System.out.println(user.getYibanAccount() + "账号密码错误...");
+			log.info(user.getYibanAccount() + "  账号密码错误..");
 			return "2";
 		}
 	}
@@ -64,11 +67,11 @@ public class UserService {
 	}
 
 	public User getOne(User user) {
-		Example<User> condition = org.springframework.data.domain.Example.of(user);
+		Example<User> condition = Example.of(user);
 		//必须是实例
- 		Optional<User> one = userRepository.findOne(condition);
- 		if (one != null && one.isPresent()) {
- 			return one.get();
+		List<User> users = userRepository.findAll(condition);
+ 		if (users != null && !users.isEmpty()) {
+ 			return users.get(0);
 		}
 		return null;
 	}
