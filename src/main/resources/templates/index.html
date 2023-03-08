@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="asserts/images/favicon.ico" th:href="@{/asserts/images/favicon.ico}" rel="shortcut icon" >
-    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet"  type="text/css" >
-    <link href="asserts/css/login.css" th:href="@{/asserts/css/login.css}" rel="stylesheet">
-    <script type="text/javascript" src="asserts/js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <link href="asserts/css/index.css" th:href="@{/asserts/css/index.css}" rel="stylesheet">
+    <script type="text/javascript" src="asserts/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="asserts/js/index.js"></script>
     <title>ban ban</title>
 </head>
 <body>
 <!--templates需要模板引擎解析-->
 <div class="center">
-    <img id="alipay" class="img-responsive" src="asserts/images/alipay_receive.jpg">
-    <form action="/register"  method="post" id="LF">
+<!--    <img id="alipay" class="img-responsive" src="asserts/images/alipay_receive.jpg">-->
+    <form action="/register"  method="post" id="LF" onsubmit="return check()">
         <h5>Hi! master</h5>
         <p>Remember, you are the girl who can fill the world with sunshine.</p>
         <div th:if="${msg!=null}">
@@ -30,7 +30,7 @@
         <p>© 2019-2020</p>
     </form>
 
-    <img id="weixin" src="asserts/images/weixin_receive.png">
+<!--    <img id="weixin" src="asserts/images/weixin_receive.png">-->
 </div>
 </body>
 </html>
